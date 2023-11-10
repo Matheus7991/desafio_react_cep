@@ -18,3 +18,7 @@ p {
 a {
   text-decoration: none;
 }
+
+select option {
+  color: #333;
+}
