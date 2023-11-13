@@ -33,12 +33,21 @@ function Cadastro() {
         addCep(nome,cep,novoEndereco);
 
     };
+
+    const setarCep = (e) =>{
+        if(e.target.value.length > 8){
+            return Error;
+        } else {
+            setCep(e.target.value);
+        }
+    }
     
   
     const checarCep = (e) =>{
+
         const cep = e.target.value.replace(/\D/g,'');
+
         fetch (`http://viacep.com.br/ws/${cep}/json`).then(res => res.json()).then(data => {
-            console.log(data);
 
             if(data.erro){
                 setUf('');
@@ -158,14 +167,14 @@ function Cadastro() {
             </Row>
 
             <Row className='mb-3'>
-                <Form.Group as={Col} md='3'>
+                <Form.Group as={Col}>
                     <Form.Label>Cep</Form.Label>
-                    <Form.Control 
+                    <Form.Control                      
                         value={cep}
                         onBlur={checarCep} 
-                        onChange={(e) => setCep(e.target.value)}
+                        onChange={setarCep}
                         type='number' 
-                        placeholder='Cep' 
+                        placeholder='Apenas números' 
                         required 
                     />
                 </Form.Group>
