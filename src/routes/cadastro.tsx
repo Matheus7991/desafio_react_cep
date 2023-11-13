@@ -72,14 +72,18 @@ function Cadastro() {
 
             } else {
 
-                if(data.bairro === null){
+                if(data.bairro === ''){
                     setNCepUnico(false);
+                    setUf(data.uf);
+                    setLocalidade(data.localidade);
+                    setnovoEndereco('Não');
                 } else {
                     setUf(data.uf);
                     setLocalidade(data.localidade);
                     setLogradouro(data.logradouro);
                     setBairro(data.bairro);
                     setIsFormDisabled(true);
+                    setNCepUnico(true);
                     setnovoEndereco('Não');
                 }
 
